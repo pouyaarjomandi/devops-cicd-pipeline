@@ -1,0 +1,40 @@
+jenkins:
+  systemMessage: "Jenkins CI/CD Server - Configured with JCasC"
+  numExecutors: 4
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "${JENKINS_ADMIN_PASSWORD:-admin}"
+
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+    adminAddress: "admin@ci.local"
+
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: true
+    installations:
+      - name: "SonarQube"
+        serverUrl: "http://sonarqube:9000"
+        triggers:
+          skipScmCause: false
+          skipUpstreamCause: false
+
+  slackNotifier:
+    teamDomain: "your-workspace"
+    tokenCredentialId: "slack-token"
+
+tool:
+  git:
+    installations:
+      - name: "Default"
+        home: "git"
