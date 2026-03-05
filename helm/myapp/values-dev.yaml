@@ -1,0 +1,22 @@
+# Development environment overrides
+
+replicaCount: 1
+
+image:
+  tag: "latest"
+  pullPolicy: Always
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+
+env:
+  FLASK_ENV: development
+  APP_VERSION: "1.0.0-dev"
