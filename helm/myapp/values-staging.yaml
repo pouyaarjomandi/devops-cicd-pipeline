@@ -1,0 +1,24 @@
+# Staging environment overrides
+
+replicaCount: 2
+
+image:
+  tag: "latest"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 75
+
+env:
+  FLASK_ENV: staging
+  APP_VERSION: "1.0.0-rc"
