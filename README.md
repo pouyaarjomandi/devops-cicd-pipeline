@@ -1,8 +1,8 @@
-# 🚀 End-to-End CI/CD Pipeline with GitOps
+# End-to-End CI/CD Pipeline with GitOps
 
 A production-grade CI/CD pipeline built for a small e-commerce startup to automate the entire software delivery lifecycle — from code commit to production deployment — using Jenkins, Docker, Kubernetes, Helm, and ArgoCD.
 
-## 📋 Project Overview
+## Project Overview
 
 **Client:** Early-stage e-commerce startup (remote engagement)  
 **Role:** Freelance DevOps Engineer  
@@ -27,7 +27,7 @@ Built a complete CI/CD pipeline that:
 - Sends Slack notifications on build status
 - Achieves **zero-downtime deployments** with rolling updates
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Developer → Git Push → Jenkins Pipeline
@@ -45,7 +45,7 @@ Developer → Git Push → Jenkins Pipeline
                                 └── Prod Namespace
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Tools |
 |----------|-------|
@@ -60,7 +60,7 @@ Developer → Git Push → Jenkins Pipeline
 | Scripting | Bash, Python |
 | Version Control | Git |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -100,7 +100,7 @@ Developer → Git Push → Jenkins Pipeline
     └── architecture.md
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -145,7 +145,7 @@ kubectl port-forward svc/argocd-server -n argocd 8443:443
 # Password: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-## 📊 Results
+## Results
 
 | Metric | Before | After |
 |--------|--------|-------|
@@ -155,18 +155,18 @@ kubectl port-forward svc/argocd-server -n argocd 8443:443
 | Test Coverage | 0% | 85% |
 | Deployment Frequency | Weekly | Multiple times/day |
 
-## 📝 Lessons Learned
+## Lessons Learned
 
 - GitOps with ArgoCD simplifies rollbacks — just revert the Git commit
 - Jenkins Configuration as Code (JCasC) makes Jenkins setup reproducible
 - Helm value overrides per environment eliminate configuration drift
 - SonarQube integration catches code quality issues before they reach production
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+## Author
 
 **Pouya Arjmandiakram**  
 DevOps / Cloud Engineer  
