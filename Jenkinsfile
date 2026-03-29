@@ -7,7 +7,7 @@ pipeline {
 
   environment {
     APP_NAME = 'flask-demo'
-    REGISTRY = 'nexus:8083'
+    REGISTRY = 'localhost:8083'
     IMAGE_REPOSITORY = "${REGISTRY}/demo/${APP_NAME}"
     IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
     GITOPS_REPO_URL = 'git@github.com:pouyaarjomandi/gitops.git'
@@ -93,12 +93,12 @@ pipeline {
     }
   }
 
-  post {
-    success {
-      slackSend channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME}) pushed ${IMAGE_REPOSITORY}:${IMAGE_TAG}"
-    }
-    failure {
-      slackSend channel: "${SLACK_CHANNEL}", color: 'danger', message: "FAILED: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME})"
-    }
-  }
+ // post {
+ //   success {
+//      slackSend channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME}) pushed ${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+ //   }
+  //  failure {
+   //   slackSend channel: "${SLACK_CHANNEL}", color: 'danger', message: "FAILED: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME})"
+  //  }
+//  }
 }
