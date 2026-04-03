@@ -3,6 +3,7 @@ pipeline {
 
   options {
     timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '10'))
   }
 
   environment {
@@ -31,7 +32,13 @@ pipeline {
 
     stage('Run Unit Tests') {
       steps {
-        sh '. .venv/bin/activate && python -m pytest'
+        sh 'mkdir -p reports'
+        sh '. .venv/bin/activate && python -m pytest --junitxml=reports/junit.xml'
+      }
+      post {
+        always {
+          junit 'reports/junit.xml'
+        }
       }
     }
 
@@ -93,12 +100,18 @@ pipeline {
     }
   }
 
- // post {
- //   success {
-//      slackSend channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME}) pushed ${IMAGE_REPOSITORY}:${IMAGE_TAG}"
- //   }
-  //  failure {
-   //   slackSend channel: "${SLACK_CHANNEL}", color: 'danger', message: "FAILED: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME})"
-  //  }
-//  }
+  post {
+    always {
+      cleanWs()
+    }
+    success {
+      slackSend channel: "${SLACK_CHANNEL}", color: 'good', message: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME}) pushed ${IMAGE_REPOSITORY}:${IMAGE_TAG}"
+    }
+    failure {
+      slackSend channel: "${SLACK_CHANNEL}", color: 'danger', message: "FAILED: ${JOB_NAME} #${BUILD_NUMBER} (${BRANCH_NAME})"
+    }
+    cleanup {
+      sh 'docker rmi ${IMAGE_REPOSITORY}:${IMAGE_TAG} || true'
+    }
+  }
 }
