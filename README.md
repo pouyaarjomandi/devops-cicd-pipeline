@@ -8,7 +8,7 @@ This project consists of two repositories:
 
 | Repository | Purpose |
 |---|---|
-| [`devops-cicd-pipeline1`](https://github.com/pouyaarjomandi/devops-cicd-pipeline1) | Application source code + Jenkinsfile + Dockerfile |
+| [`devops-cicd-pipeline`](https://github.com/pouyaarjomandi/devops-cicd-pipeline) | Application source code + Jenkinsfile + Dockerfile |
 | [`gitops`](https://github.com/pouyaarjomandi/gitops) | Helm charts + ArgoCD application manifests + environment-specific values |
 
 ## Architecture
@@ -36,7 +36,7 @@ Developer pushes code
 ## Repository Structure
 
 ```
-devops-cicd-pipeline1/
+devops-cicd-pipeline/
 ├── app.py                    # Flask API application
 ├── Dockerfile                # Multi-stage Docker build
 ├── Jenkinsfile               # CI/CD pipeline definition
@@ -83,7 +83,7 @@ devops-cicd-pipeline1/
 ## Quick Start — Infrastructure
 
 ```bash
-dcd infrastructures
+cd infrastructures
 docker compose up -d
 ```
 
