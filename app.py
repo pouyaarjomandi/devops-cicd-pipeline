@@ -19,7 +19,7 @@ def home():
         "service": "E-Commerce Product API",
         "version": os.getenv("APP_VERSION", "1.0.0"),
         "status": "running",
-        "environment": os.getenv("FLASK_ENV", "development")
+        "environment": os.getenv("APP_ENV", "production")
     })
 
 
@@ -65,5 +65,5 @@ def create_product():
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
-    debug = os.getenv("FLASK_ENV", "development") == "development"
+    debug = os.getenv("APP_ENV", "production") == "development"
     app.run(host="0.0.0.0", port=port, debug=debug)
