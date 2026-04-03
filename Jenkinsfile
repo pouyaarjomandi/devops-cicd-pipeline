@@ -86,7 +86,7 @@ pipeline {
               TARGET_FILE="gitops-workdir/apps/prod/values.yaml"
             fi
 
-            sed -i "s|tag: .*|tag: ${IMAGE_TAG}|" "$TARGET_FILE"
+            sed -i "s|^  tag: .*|  tag: ${IMAGE_TAG}|" "$TARGET_FILE"
 
             cd gitops-workdir
             git config user.name "Jenkins CI"
