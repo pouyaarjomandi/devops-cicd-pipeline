@@ -2,15 +2,22 @@
 __pycache__/
 *.py[cod]
 *.pyo
+*.pyd
+.Python
 .venv/
 venv/
+env/
 *.egg-info/
+.eggs/
 .pytest_cache/
 .coverage
+coverage.xml
 htmlcov/
 
 # Dev/Test
 tests/
+reports/
+pytest.ini
 requirements-dev.txt
 
 # CI/CD & Infrastructure
@@ -18,6 +25,16 @@ Jenkinsfile
 infrastructures/
 .git/
 .gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
 
 # Misc
 *.md
