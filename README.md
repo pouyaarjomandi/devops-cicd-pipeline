@@ -68,8 +68,8 @@ devops-cicd-pipeline/
 | `develop` | Development | `apps/dev/values.yaml` |
 | `staging` | Staging | `apps/staging/values.yaml` |
 | `main` | Production | `apps/prod/values.yaml` |
-|
-| API Endpoints
+
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
